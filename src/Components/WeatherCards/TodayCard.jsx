@@ -1,10 +1,14 @@
-import { Box, flex } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import React from "react";
 import { Divider } from "@chakra-ui/react";
 import { CiLocationOn } from "react-icons/ci";
 import { TiWeatherCloudy } from "react-icons/ti";
 import { AiOutlineClockCircle } from "react-icons/ai";
-function TodayCard(props) {
+import partlyCloudy from "../../gifs/partly-cloudy-day.gif"
+import fog from "../../gifs/fog.gif"
+
+
+function TodayCard(props,temp) {
   const d = new Date();
   const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   const day = daysOfWeek[d.getDay()];
@@ -14,11 +18,13 @@ function TodayCard(props) {
   return (
     <Box px={6} py={10} sx={{ textAlign: "left" }}>
 
-<img src="" alt="" srcset={props.condition.icon} />
+{/* <img src="" alt=""  srcset={props.condition.icon} /> */}
+<img src={partlyCloudy} alt="Partly Cloudy" style={{ width: "200px", height: "200px" }} />
 
       <Box fontSize="52px" py={3} fontWeight="light">
-        {props.temp_c}°C
+        {props.temp_c} {temp ? '°C' : '°F'}
       </Box>
+
       <Box display="flex" sx={{ justifyContent: "space-between" }}>
         <Box>
           <Box fontSize="font18px" fontWeight="bold">
@@ -41,9 +47,11 @@ function TodayCard(props) {
       <Box display="flex" pt={5} pb={3}>
         <TiWeatherCloudy /> &nbsp; {props.condition.text} 
       </Box>
+     
       <Box display="flex">
         <AiOutlineClockCircle /> &nbsp; 15:45
       </Box>
+
     </Box>
   );
 }

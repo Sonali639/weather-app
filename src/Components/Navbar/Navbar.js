@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Container } from '@chakra-ui/react'
 import { Box, Divider } from '@chakra-ui/react'
 import Logo from './Logo';
@@ -8,6 +8,7 @@ import { SearchBar } from './Searchbar';
 
 
 function Navbar() {
+  
 
   return (
 
