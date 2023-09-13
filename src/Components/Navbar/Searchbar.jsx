@@ -17,7 +17,7 @@ export const SearchBar = () => {
           pointerEvents="none"
           children={<BiSearchAlt color="gray.600" />}
         />
-        <Input type="text" placeholder="Search for places" border="1px solid #f3f4f6"   sx={{borderRadius:'50px', backgroundColor:'#f3f4f6'}}/>
+        <Input type="text" placeholder="Search for places" border="1px solid #fff"   sx={{borderRadius:'50px', backgroundColor:'#fff'}}/>
         <InputRightElement
           p={0}
           border="none"

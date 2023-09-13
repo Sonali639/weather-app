@@ -1,28 +1,51 @@
-import { Box , flex} from '@chakra-ui/react'
-import React from 'react'
-import { Divider } from '@chakra-ui/react'
-import { TiWeatherCloudy } from 'react-icons/ti';
-import { AiOutlineClockCircle } from 'react-icons/ai';
-function TodayCard() {
-  return (
-    <Box px={6} py={10} sx={{textAlign:'left'}}>
-       <Box fontSize='52px'>12°C</Box>
-        <Box display='flex' sx={{ justifyContent: 'space-between' }}>
-         
-            <Box>
-                <h1>Dehradun</h1>
-            </Box>
+import { Box, flex } from "@chakra-ui/react";
+import React from "react";
+import { Divider } from "@chakra-ui/react";
+import { CiLocationOn } from "react-icons/ci";
+import { TiWeatherCloudy } from "react-icons/ti";
+import { AiOutlineClockCircle } from "react-icons/ai";
+function TodayCard(props) {
+  const d = new Date();
+  const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const day = daysOfWeek[d.getDay()];
 
-            <Box>
-                <h1>Monday , oct 7</h1>
-            </Box>
+  const dayOfMonth = d.getDate();
+  const month = d.toLocaleDateString("en-US", { month: "long" });
+  return (
+    <Box px={6} py={10} sx={{ textAlign: "left" }}>
+
+<img src="" alt="" srcset={props.condition.icon} />
+
+      <Box fontSize="52px" py={3} fontWeight="light">
+        {props.temp_c}°C
+      </Box>
+      <Box display="flex" sx={{ justifyContent: "space-between" }}>
+        <Box>
+          <Box fontSize="font18px" fontWeight="bold">
+            {day} , <span fontWeight="light">{dayOfMonth} {month}</span>{" "}
+          </Box>
         </Box>
-        <Divider py={2}/>
-    <h4 sx={{display:'flex'}}><TiWeatherCloudy/>  Patchy Drizzle Day</h4>
-    <h1 sx={{display:'flex'}} ><AiOutlineClockCircle/> 25°C</h1>
-      
+        <Box>
+          <Box
+            fontFamily="heading"
+            fontSize="font22px"
+            fontWeight="bold"
+            display="flex"
+          >
+            <CiLocationOn />
+            {props.name}
+          </Box>
+        </Box>
+      </Box>
+      <Divider py={2} />
+      <Box display="flex" pt={5} pb={3}>
+        <TiWeatherCloudy /> &nbsp; {props.condition.text} 
+      </Box>
+      <Box display="flex">
+        <AiOutlineClockCircle /> &nbsp; 15:45
+      </Box>
     </Box>
-  )
+  );
 }
 
-export default TodayCard
+export default TodayCard;

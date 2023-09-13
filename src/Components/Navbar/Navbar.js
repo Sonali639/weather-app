@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container } from '@chakra-ui/react'
-import { Box } from '@chakra-ui/react'
+import { Box, Divider } from '@chakra-ui/react'
 import Logo from './Logo';
 import Buttons from './Buttons';
 
@@ -11,8 +11,8 @@ function Navbar() {
 
   return (
 
-    <Box sx={{ bgcolor: 'green', py: 10 }}>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+    <Box sx={{ bgcolor: 'green', py: 5 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between' ,py:5}}>
 <Logo/>
 
         <Box>
@@ -21,6 +21,7 @@ function Navbar() {
 
         <Buttons />
       </Box>
+      <Divider/>
     </Box>
   )
 }

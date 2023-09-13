@@ -1,15 +1,17 @@
 import React from 'react'
-import { Box } from '@chakra-ui/react'
+import { Box, } from '@chakra-ui/react'
 import Navbar from './Navbar/Navbar';
 import AllCards from './WeatherCards/AllCards';
 import { Container } from '@chakra-ui/react'
 
 function Index() {
+
   return (
-    <Box>
-     <Container maxW="94%" >
-      <Navbar />
-      <AllCards />
+    <Box sx={{ backgroundColor: '#f3f4f6' }}>
+      <Container maxW="94%" >
+        <Navbar />
+
+        <AllCards />
       </Container>
     </Box>
   )

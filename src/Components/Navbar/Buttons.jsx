@@ -4,6 +4,7 @@ import { HiOutlineMoon } from 'react-icons/hi2';
 import { Button, ButtonGroup } from '@chakra-ui/react'
 
 function Buttons() {
+  const [mode, setMode] = React.useState('Light')
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <Button mx={3} fontSize='20px' px={3} py={4} colorScheme='black' size='sm' sx={{ borderRadius: '50px', backgroundColor: 'black', boxShadow: '0px 0px 8px rgba(0, 0, 0, 0.3)' }}>
