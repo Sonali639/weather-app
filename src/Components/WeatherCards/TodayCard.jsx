@@ -1,4 +1,4 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Text, useColorMode} from "@chakra-ui/react";
 import React from "react";
 import { Divider } from "@chakra-ui/react";
 import { CiLocationOn } from "react-icons/ci";
@@ -7,7 +7,7 @@ import { AiOutlineClockCircle } from "react-icons/ai";
 import partlyCloudy from "../../gifs/partly-cloudy-day.gif"
 import fog from "../../gifs/fog.gif"
 import { useSelector, useDispatch } from "react-redux";
-
+import { useColorModeValue } from "@chakra-ui/color-mode";
 
 function TodayCard(props) {
   const temp = useSelector((state) => state.temp);
@@ -18,6 +18,7 @@ function TodayCard(props) {
 
   const dayOfMonth = d.getDate();
   const month = d.toLocaleDateString("en-US", { month: "long" });
+  const colorText = useColorModeValue("black", "white");
   return (
     <Box px={6} py={10} sx={{ textAlign: "left" }}>
 
@@ -30,7 +31,7 @@ function TodayCard(props) {
 
       <Box display="flex" sx={{ justifyContent: "space-between" }}>
         <Box>
-          <Box fontSize="font18px" fontWeight="bold">
+          <Box fontSize="font18px" fontWeight="bold"  sx={{color:colorText}}>
             {day} , <span fontWeight="light">{dayOfMonth} {month}</span>{" "}
           </Box>
         </Box>

@@ -1,71 +1,72 @@
 import React from "react";
-import { Box,Text } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import { Grid, GridItem } from "@chakra-ui/react";
-import wind from "../../images/wind.jpg"
-import humidity from "../../images/humidity.png"
-import visibility from "../../images/visibility.png"
-import airQuality from "../../images/airquality.jpg"
-import sunrise from "../../images/uv.png"
+import wind from "../../images/wind.jpg";
+import humidity from "../../images/humidity.png";
+import visibility from "../../images/visibility.png";
+import airQuality from "../../images/airquality.jpg";
+import sunrise from "../../images/uv.png";
+import { useColorModeValue } from "@chakra-ui/color-mode";
 
-
-function Highlights() {
-
+function Highlights(props) {
   return (
     <Box pt={16}>
       <Box fontSize="20px" align="left" pb={3}>
         Today's Highlights
       </Box>
-     
-        <HighlightsMap />
-      
+
+      <HighlightsMap {...props} />
     </Box>
   );
 }
 
-
-
-
 function HighlightsMap(props) {
+  
+  const bg = useColorModeValue("white","#3b3f4b");
   const itemsToRender = [
     {
       name: "UV Index",
       key: "uv",
-      img: sunrise
+      img: sunrise,
     },
     {
       name: "Wind Status",
       key: "wind_kph",
-      img: wind
-        },
+      img: wind,
+    },
     {
       name: "Humidity",
       key: "humidity",
-      img: humidity
+      img: humidity,
     },
     {
       name: "Visibility",
       key: "vis_km",
-        img: visibility
+      img: visibility,
     },
     {
       name: "Air Quality",
       key: "air_quality",
-      img:airQuality
-     },
+      img: airQuality,
+    },
     {
       name: "Sunrise & Sunset",
-      key: "sunrise",
+      key: "",
+      img: sunrise,
+      img1: sunrise,
     },
   ];
   return (
     <Box>
-       <Grid templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(3, 1fr)" }}  gap={6}>
-      {itemsToRender.map((item, index) => (
+      <Grid
+        templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(3, 1fr)" }}
+        gap={6}
+      >
+        {itemsToRender.map((item, index) => (
           <GridItem
             key={index}
             w="100%"
-          
-            bg="primary.white"
+            bg={bg}
             py={5}
             borderRadius="12px"
             sx={{
@@ -76,23 +77,41 @@ function HighlightsMap(props) {
             <Box pl={6} color="primary.greyText">
               {item.name}
             </Box>
-            
+
             <img
               src={item.img}
               alt=""
-             
               srcSet=""
-              width="34%"
-              style={{ display: "block", margin: "0 auto",paddingTop:"14px" }}
+              width={item.img1 ? "16%" : "30%"}
+              style={{
+                display: "block",
+                margin: item.img1 ? "0px" : "0 auto",
+                paddingTop: "14px",
+                marginLeft: item.img1 ? "20px" : "auto",
+              }}
             />
-         <Text fontSize="32px" textAlign="center" pt={3}>
-      {props[item.key]}
-    </Text>
+            {/* if img 1 */}
+            {item.img1 && (
+              <img
+                src={item.img}
+                alt=""
+                srcSet=""
+                width="16%"
+                style={{
+                  display: "block",
+                  marginLeft: "20px",
+                  paddingTop: "16px",
+                }}
+              />
+            )}
+            <Text fontSize="32px" textAlign="center" pt={3}>
+              {props[item.key]}
+            </Text>
           </GridItem>
         ))}
-        </Grid>
+      </Grid>
     </Box>
-  )
+  );
 }
 
 export { Highlights, HighlightsMap };

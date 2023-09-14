@@ -2,6 +2,7 @@ import React from 'react'
 import { Box } from "@chakra-ui/react";
 import { Grid, GridItem,Text } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
+import { useColorModeValue } from "@chakra-ui/color-mode";
 
 function WeekCardGrid(props) {
     const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -10,20 +11,20 @@ function WeekCardGrid(props) {
     const temp = useSelector((state) => state.temp);
 
 
+    const bg = useColorModeValue("white","#3b3f4b");
+
   return (
   
     <Grid templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(5, 2fr)" }}  gap={3}>
     {props.forecastday.map((item, index) => {
               const dayIndex = (currentDayIndex + index) % 7;
               const dayName = daysOfWeek[dayIndex];
-    
-
       return (
         <GridItem
           key={index}
           w="100%"
           h="200px"
-          bg="primary.white"
+          bg={bg}
           py={5}
           borderRadius="12px"
           sx={{
