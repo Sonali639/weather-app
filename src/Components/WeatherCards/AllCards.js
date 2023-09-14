@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Box } from '@chakra-ui/react'
 import TodayCard from './TodayCard'
 import { Grid, GridItem ,Flex} from '@chakra-ui/react'
-import WeekCard from './WeekCard'
+import {WeekCard} from './WeekCard'
 import {Highlights} from './Highlights'
 import axios from 'axios'
 
