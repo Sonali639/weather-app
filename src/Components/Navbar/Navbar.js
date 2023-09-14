@@ -8,7 +8,6 @@ import { SearchBar } from './Searchbar';
 
 
 function Navbar() {
-  
 
   return (
 

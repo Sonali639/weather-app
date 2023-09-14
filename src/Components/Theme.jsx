@@ -8,6 +8,8 @@ const Theme = extendTheme({
       100: '#E6F7FF',
       greyText: 'rgb(156 163 175)',
       white: '#fff',
+      black: '#000',
+      gray: '#808080',
     },
   },
   fonts: {

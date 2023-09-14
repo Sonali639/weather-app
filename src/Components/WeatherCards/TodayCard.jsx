@@ -6,9 +6,12 @@ import { TiWeatherCloudy } from "react-icons/ti";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import partlyCloudy from "../../gifs/partly-cloudy-day.gif"
 import fog from "../../gifs/fog.gif"
+import { useSelector, useDispatch } from "react-redux";
 
 
-function TodayCard(props,temp) {
+function TodayCard(props) {
+  const temp = useSelector((state) => state.temp);
+
   const d = new Date();
   const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   const day = daysOfWeek[d.getDay()];
@@ -22,7 +25,7 @@ function TodayCard(props,temp) {
 <img src={partlyCloudy} alt="Partly Cloudy" style={{ width: "200px", height: "200px" }} />
 
       <Box fontSize="52px" py={3} fontWeight="light">
-        {props.temp_c} {temp ? '°C' : '°F'}
+      {temp ? `${props.temp_c}°C` : `${props.temp_f}°F`} 
       </Box>
 
       <Box display="flex" sx={{ justifyContent: "space-between" }}>

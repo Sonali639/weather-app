@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Box } from '@chakra-ui/react'
 import TodayCard from './TodayCard'
-import { Grid, GridItem } from '@chakra-ui/react'
+import { Grid, GridItem ,Flex} from '@chakra-ui/react'
 import WeekCard from './WeekCard'
-import Highlights from './Highlights'
+import {Highlights} from './Highlights'
 import axios from 'axios'
 
 function AllCards() {
@@ -28,11 +28,11 @@ function AllCards() {
         <Box>
 
           <Grid templateColumns="repeat(12, 1fr)" gap={6}>
-            <GridItem colSpan={4} bg="primary.white" h="100%" border='1px solid white' borderRadius='25px'>
+            <GridItem colSpan={{ base: 12, md: 4 }}  bg="primary.white" h="100%" border='1px solid white' borderRadius='25px'>
               <TodayCard {...weatherData.current} name={city} />
             </GridItem>
 
-            <GridItem colSpan={8} bg="white.500" h="500px" >
+            <GridItem colSpan={{ base: 12, md: 8 }}  bg="white.500" h="500px" >
               <WeekCard {...weatherData.forecast} />
               <Highlights {...weatherData.current} />
 

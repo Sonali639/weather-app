@@ -1,16 +1,18 @@
 import React from "react";
 import { Box } from "@chakra-ui/react";
 import { Grid, GridItem,Text } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
 
 function WeekCard(props) {
     const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     const currentDate = new Date();
     const currentDayIndex = currentDate.getDay();
+    const temp = useSelector((state) => state.temp);
       
   return (
     <Box pt={10}>
-        
-      <Grid templateColumns="repeat(5, 2fr)" gap={3}>
+
+      <Grid templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(5, 2fr)" }}  gap={3}>
         {props.forecastday.map((item, index) => {
                   const dayIndex = (currentDayIndex + index) % 7;
                   const dayName = daysOfWeek[dayIndex];
@@ -39,7 +41,11 @@ function WeekCard(props) {
                 srcSet={item.day.condition.icon}
                 style={{ display: "block", margin: "0 auto" }}
               />
-              <Text fontSize="22px">{item.hour[0].temp_c}°C</Text>
+              <Text fontSize="22px">  {temp
+    ? `${item.hour[0].temp_c} °C`
+    : `${item.hour[0].temp_f} °F`
+  }
+</Text>
               <Text fontSize="14px">{item.day.condition.text}</Text>
             </GridItem>
           );

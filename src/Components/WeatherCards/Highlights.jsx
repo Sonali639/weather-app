@@ -7,8 +7,25 @@ import visibility from "../../images/visibility.png"
 import airQuality from "../../images/airquality.jpg"
 import sunrise from "../../images/uv.png"
 
-function Highlights(props) {
-  console.log(props);
+
+function Highlights() {
+
+  return (
+    <Box pt={16}>
+      <Box fontSize="20px" align="left" pb={3}>
+        Today's Highlights
+      </Box>
+     
+        <HighlightsMap />
+      
+    </Box>
+  );
+}
+
+
+
+
+function HighlightsMap(props) {
   const itemsToRender = [
     {
       name: "UV Index",
@@ -40,15 +57,10 @@ function Highlights(props) {
       key: "sunrise",
     },
   ];
-
   return (
-    <Box pt={16}>
-      <Box fontSize="20px" align="left" pb={3}>
-        Today's Highlights
-      </Box>
-
-      <Grid templateColumns="repeat(3, 1fr)" gap={6}>
-        {itemsToRender.map((item, index) => (
+    <Box>
+       <Grid templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(3, 1fr)" }}  gap={6}>
+      {itemsToRender.map((item, index) => (
           <GridItem
             key={index}
             w="100%"
@@ -78,9 +90,9 @@ function Highlights(props) {
     </Text>
           </GridItem>
         ))}
-      </Grid>
+        </Grid>
     </Box>
-  );
+  )
 }
 
-export default Highlights;
+export { Highlights, HighlightsMap };
