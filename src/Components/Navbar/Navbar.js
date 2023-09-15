@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Container } from '@chakra-ui/react'
 import { Box, Divider,Flex ,Grid, GridItem } from '@chakra-ui/react'
 import Logo from './Logo';
-import Buttons from './Buttons';
+import {Buttons} from './Buttons';
 
 import { SearchBar } from './Searchbar';
 

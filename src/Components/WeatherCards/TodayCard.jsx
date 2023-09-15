@@ -9,6 +9,7 @@ import fog from "../../gifs/fog.gif";
 import { useSelector } from "react-redux";
 import { useColorModeValue } from "@chakra-ui/color-mode";
 import { SearchBar } from "../Navbar/Searchbar";
+import { CelFarBtns } from "../Navbar/Buttons";
 
 function TodayCard(props) {
   const temp = useSelector((state) => state.temp);
@@ -64,6 +65,8 @@ function TodayCard(props) {
           </Box>
         </Box>
       </Box>
+
+      <CelFarBtns smbtnVisible={true}/>
       <Divider py={2} />
       <Box display="flex" pt={5} pb={3}>
         <TiWeatherCloudy /> &nbsp; {props.condition.text}

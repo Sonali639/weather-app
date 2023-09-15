@@ -13,7 +13,7 @@ import axios from "axios";
 
 export const SearchBar = (props) => {
   const bg = useColorModeValue("white", "#898b93");
-  const border = useColorModeValue("1px solid #fff", "1px solid #3b3f4b");
+  const border = useColorModeValue("1px solid grey", "1px solid #3b3f4b");
   const color = useColorModeValue("black", "black");
 
   const [searchValue, setSearchValue] = useState("");
@@ -50,7 +50,7 @@ export const SearchBar = (props) => {
       <InputGroup
         borderRadius={5}
         size="md"
-        width="400px"
+        width="100%"
         display={
           props.todisplay
             ? { base: "block", md: "none", lg: "none" }
@@ -62,16 +62,21 @@ export const SearchBar = (props) => {
           color={color}
           children={<BiSearchAlt />}
         />
-        <Input
-          type="text"
-          placeholder="Search for places"
-          border={border}
-          bgColor={bg}
-          sx={{ borderRadius: "50px", "::placeholder": { color: "black" } }}
-          value={searchValue}
-          onChange={handleInputChange}
-          onKeyPress={handleKeyPress}
-        />
+   <Input
+  type="text"
+  placeholder="Search for places"
+  border={border}
+  bgColor={bg}
+  sx={{
+    borderRadius: "50px",
+    "::placeholder": { color: "black" },
+    boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.1)", // Add shadow here
+  }}
+  value={searchValue}
+  onChange={handleInputChange}
+  onKeyPress={handleKeyPress}
+/>
+
         <InputRightElement
           p={0}
           color={color}

@@ -9,14 +9,47 @@ import { BiSun } from "react-icons/bi";
 
 function Buttons() {
   const { toggleColorMode } = useColorMode();
-  const check =useColorModeValue("white","#3b3f4b");
-  const bgC = useColorModeValue("black","white");
-  const colorC = useColorModeValue("white","black");
-  const bgCHover = useColorModeValue("#222","#eee");
-  const bgF = useColorModeValue("white","#898b93");
+  const check = useColorModeValue("white", "#3b3f4b");
 
+  // const temp = useSelector((state) => state.temp);
+
+  return (
+    <Box sx={{ display: "flex", alignItems: "center" }}>
+<Box display={{ base: 'none', md: 'block' }} >
+        <CelFarBtns />
+        </Box>
+      {/* <CelFarBtns display={{ base: 'none', md: 'block' }}/> */}
+      <Box ml={3}>
+        {check === "white" ? (
+          <HiOutlineMoon
+            size={25}
+            onClick={toggleColorMode}
+            style={{
+              transition: "transform 0.2s ease-in-out",
+              cursor: "pointer",
+            }}
+          />
+        ) : (
+          <BiSun
+            size={25}
+            onClick={toggleColorMode}
+            style={{
+              transition: "transform 0.2s ease-in-out",
+              cursor: "pointer",
+            }}
+          />
+        )}
+      </Box>
+    </Box>
+  );
+}
+
+function CelFarBtns(props) {
+  const bgC = useColorModeValue("black", "white");
+  const colorC = useColorModeValue("white", "black");
+  const bgCHover = useColorModeValue("#222", "#eee");
+  const bgF = useColorModeValue("white", "#898b93");
   const dispatch = useDispatch();
-  const temp = useSelector((state) => state.temp);
   const handleC = () => {
     dispatch(cbutton());
   };
@@ -25,14 +58,15 @@ function Buttons() {
     dispatch(fbutton());
   };
   return (
-    <Box sx={{ display: "flex", alignItems: "center" }}>
+    <Box sx={{ display: "flex", alignItems: "center" }}  justifyContent={props.smbtnVisible ? "right" : "none"}  py={props.smbtnVisible ? "4" : "none"}>
       <Button
         mx={3}
         onClick={handleC}
         fontSize="20px"
         px={3}
         py={1.5}
-        display={{ base: 'none', md: 'block' }}
+       
+        display={props.smbtnVisible ? { base: "block", md: "none" ,lg:"none"} : {base: "block",}}
         bgColor={bgC}
         size="sm"
         color={colorC}
@@ -41,10 +75,9 @@ function Buttons() {
           cursor: "pointer",
           boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.3)",
           "&:hover": {
-            transform: "scale(1.2)", 
-          bgColor:bgCHover
+            transform: "scale(1.2)",
+            bgColor: bgCHover,
           },
-
         }}
       >
         °C
@@ -52,7 +85,7 @@ function Buttons() {
       <Button
         px={3}
         mr={6}
-        display={{ base: 'none', md: 'block' }} 
+        display={props.smbtnVisible ? { base: "block", md: "none" ,lg:"none"} : {base: "block"}}
         onClick={handleF}
         fontSize="20px"
         py={1.5}
@@ -64,35 +97,14 @@ function Buttons() {
           cursor: "pointer",
           boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.3)",
           "&:hover": {
-            transform: "scale(1.2)", 
+            transform: "scale(1.2)",
           },
         }}
       >
         °F
       </Button>
-      <Box ml={3}>
-  {check === "white" ? (
-    <HiOutlineMoon
-      size={25}
-      onClick={toggleColorMode}
-      style={{
-        transition: "transform 0.2s ease-in-out",
-        cursor: "pointer",
-      }}
-    />
-  ) : (
-    <BiSun
-      size={25}
-      onClick={toggleColorMode}
-      style={{
-        transition: "transform 0.2s ease-in-out",
-        cursor: "pointer",
-      }}
-    />
-  )}
-</Box>
     </Box>
   );
 }
 
-export default Buttons;
+export { Buttons, CelFarBtns };
