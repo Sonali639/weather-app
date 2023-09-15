@@ -16,3 +16,17 @@ code {
     margin-top: 20px; /* Adjust the margin-top value as needed to create the desired gap */
   }
 }
+
+/* CSS for small screens (max-width: 600px) */
+@media (max-width: 600px) {
+  .navbar-container {
+    display: none;
+  }
+}
+
+/* CSS for medium and larger screens (min-width: 601px) */
+@media (min-width: 601px) {
+  .responsive-nav-container {
+    display: none;
+  }
+}

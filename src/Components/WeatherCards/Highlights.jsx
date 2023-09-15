@@ -17,7 +17,7 @@ function Highlights(props) {
         Today's Highlights
       </Box>
 
-      <HighlightsMap {...props} />
+      <HighlightsMap {...props}  />
     </Box>
   );
 }
@@ -48,12 +48,13 @@ function HighlightsMap(props) {
     },
     {
       name: "Air Quality",
-      key: "air_quality",
+      key: "no2",
       img: airQuality,
     },
     {
       name: "Sunrise & Sunset",
-      key: "",
+      key: "sunrise",
+      key2: "sunset",
       img: sun,
       img1: moon,
     },
@@ -108,7 +109,9 @@ function HighlightsMap(props) {
               />
             )}
             <Text fontSize="32px" textAlign="center" pt={3}>
-              {props[item.key]}
+              {props[item.key]}{props.aqi[item.key]}
+              
+              {props.sunSetRise[item.key]} <br /> {props.sunSetRise[item.key2]}
             </Text>
           </GridItem>
         ))}

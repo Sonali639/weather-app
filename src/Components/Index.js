@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, } from '@chakra-ui/react'
-import Navbar from './Navbar/Navbar';
+import {Navbar} from './Navbar/Navbar';
 import AllCards from './WeatherCards/AllCards';
 import { Container } from '@chakra-ui/react'
 import { useColorModeValue } from "@chakra-ui/color-mode";
