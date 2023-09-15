@@ -4,16 +4,32 @@ import { Divider } from "@chakra-ui/react";
 import { CiLocationOn } from "react-icons/ci";
 import { TiWeatherCloudy } from "react-icons/ti";
 import { AiOutlineClockCircle } from "react-icons/ai";
-import partlyCloudy from "../../gifs/partly-cloudy-day.gif";
 import fog from "../../gifs/fog.gif";
 import { useSelector } from "react-redux";
 import { useColorModeValue } from "@chakra-ui/color-mode";
 import { SearchBar } from "../Navbar/Searchbar";
 import { CelFarBtns } from "../Navbar/Buttons";
+import PartialCloudy from "../../images/weather/cloudy-sun.png"
+import ModerateRain from "../../images/weather/light-rain.png"
+import patchyrain from "../../images/weather/patchy-rain.png"
 
 function TodayCard(props) {
   const temp = useSelector((state) => state.temp);
 
+const weatherimg=[
+  {
+    "weather": "Partly cloudy",
+    "icon": PartialCloudy
+  },
+  {
+    "weather": "Moderate rain",
+    "icon": ModerateRain
+  },
+  {
+    "weather": "Patchy rain possible",
+    "icon": fog
+  }
+]
   const d = new Date();
   const daysOfWeek = [
     "Sunday",
@@ -34,11 +50,21 @@ function TodayCard(props) {
       {/* <img src="" alt=""  srcset={props.condition.icon} /> */}
       <SearchBar todisplay={true} />
 
+      {weatherimg.map((item, index) => {
+  if (item.weather === props.condition.text) {
+    return (
       <img
-        src={partlyCloudy}
-        alt="Partly Cloudy"
-        style={{ width: "200px", height: "200px" }}
+        src={item.icon}
+        alt={props.condition.text}
+        width="80%"
+        key={index} 
       />
+    );
+  } else {
+    return null; 
+  }
+})}
+
 
       <Box fontSize="52px" py={3} fontWeight="light">
         {temp ? `${props.temp_c}°C` : `${props.temp_f}°F`}

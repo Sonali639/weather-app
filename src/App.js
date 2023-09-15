@@ -4,7 +4,7 @@ import Home from './Components/Index';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" >
       <BrowserRouter>
         <Routes>
 
