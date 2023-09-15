@@ -1,11 +1,13 @@
 import React from "react";
 import { Box, Text } from "@chakra-ui/react";
 import { Grid, GridItem } from "@chakra-ui/react";
-import wind from "../../images/wind.jpg";
+import wind from "../../images/wind.png";
 import humidity from "../../images/humidity.png";
 import visibility from "../../images/visibility.png";
-import airQuality from "../../images/airquality.jpg";
+import airQuality from "../../images/airquality.png";
 import sunrise from "../../images/uv.png";
+import sun from "../../images/sun.png"
+import moon from "../../images/moon.png"
 import { useColorModeValue } from "@chakra-ui/color-mode";
 
 function Highlights(props) {
@@ -52,8 +54,8 @@ function HighlightsMap(props) {
     {
       name: "Sunrise & Sunset",
       key: "",
-      img: sunrise,
-      img1: sunrise,
+      img: sun,
+      img1: moon,
     },
   ];
   return (
@@ -86,14 +88,15 @@ function HighlightsMap(props) {
               style={{
                 display: "block",
                 margin: item.img1 ? "0px" : "0 auto",
-                paddingTop: "14px",
+
+                paddingTop: item.img1 ? "24px" : "14px",
                 marginLeft: item.img1 ? "20px" : "auto",
               }}
             />
             {/* if img 1 */}
             {item.img1 && (
               <img
-                src={item.img}
+                src={item.img1}
                 alt=""
                 srcSet=""
                 width="16%"

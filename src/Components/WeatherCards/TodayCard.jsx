@@ -32,7 +32,7 @@ function TodayCard(props) {
       <Box display="flex" sx={{ justifyContent: "space-between" }}>
         <Box>
           <Box fontSize="font18px" fontWeight="bold"  sx={{color:colorText}}>
-            {day} , <span fontWeight="light">{dayOfMonth} {month}</span>{" "}
+            {day} , <br /> <span fontWeight="light">{dayOfMonth} {month}</span>{" "}
           </Box>
         </Box>
         <Box>

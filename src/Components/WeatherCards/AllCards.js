@@ -6,6 +6,7 @@ import { WeekCard } from './WeekCard'
 import { Highlights } from './Highlights'
 import axios from 'axios'
 import { useColorModeValue } from "@chakra-ui/color-mode";
+import Loading from '../Animation/loading';
 
 function AllCards() {
   const [weatherData, setWeatherData] = useState(null);
@@ -27,8 +28,9 @@ function AllCards() {
   const border = useColorModeValue("1px solid white","1px solid #3b3f4b");
 
   return (
-    !weatherData ? (<h1> Loading</h1 >) :
+    !weatherData ? (<Loading />) :
       (
+       
         <Box>
 
           <Grid templateColumns="repeat(12, 1fr)" gap={6}>

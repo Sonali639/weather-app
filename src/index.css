@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.custom-carousel {
+  .carousel .thumbs-wrapper {
+    margin-top: 20px; /* Adjust the margin-top value as needed to create the desired gap */
+  }
+}

@@ -10,6 +10,10 @@ import { BiSun } from "react-icons/bi";
 function Buttons() {
   const { toggleColorMode } = useColorMode();
   const check =useColorModeValue("white","#3b3f4b");
+  const bgC = useColorModeValue("black","white");
+  const colorC = useColorModeValue("white","black");
+  const bgCHover = useColorModeValue("#222","#eee");
+  const bgF = useColorModeValue("white","#898b93");
 
   const dispatch = useDispatch();
   const temp = useSelector((state) => state.temp);
@@ -28,12 +32,18 @@ function Buttons() {
         fontSize="20px"
         px={3}
         py={4}
-        colorScheme="black"
+        bgColor={bgC}
         size="sm"
+        color={colorC}
         sx={{
           borderRadius: "50px",
-          backgroundColor: "black",
+          cursor: "pointer",
           boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.3)",
+          "&:hover": {
+            transform: "scale(1.2)", 
+          bgColor:bgCHover
+          },
+
         }}
       >
         °C
@@ -44,24 +54,41 @@ function Buttons() {
         onClick={handleF}
         fontSize="20px"
         py={4}
-        colorScheme="gray"
+        bgColor={bgF}
         size="sm"
+        color="black"
         sx={{
           borderRadius: "50px",
+          cursor: "pointer",
           boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.3)",
+          "&:hover": {
+            transform: "scale(1.2)", 
+          },
         }}
       >
         °F
       </Button>
       <Box ml={3}>
-      {check === "white" ? (
-  <HiOutlineMoon size={25} onClick={toggleColorMode} />
-) : (
-  <BiSun size={25} onClick={toggleColorMode} />
-)}
-
-        
-      </Box>
+  {check === "white" ? (
+    <HiOutlineMoon
+      size={25}
+      onClick={toggleColorMode}
+      style={{
+        transition: "transform 0.2s ease-in-out",
+        cursor: "pointer",
+      }}
+    />
+  ) : (
+    <BiSun
+      size={25}
+      onClick={toggleColorMode}
+      style={{
+        transition: "transform 0.2s ease-in-out",
+        cursor: "pointer",
+      }}
+    />
+  )}
+</Box>
     </Box>
   );
 }
