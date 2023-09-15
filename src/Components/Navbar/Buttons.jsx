@@ -31,7 +31,8 @@ function Buttons() {
         onClick={handleC}
         fontSize="20px"
         px={3}
-        py={4}
+        py={1.5}
+        display={{ base: 'none', md: 'block' }}
         bgColor={bgC}
         size="sm"
         color={colorC}
@@ -51,9 +52,10 @@ function Buttons() {
       <Button
         px={3}
         mr={6}
+        display={{ base: 'none', md: 'block' }} 
         onClick={handleF}
         fontSize="20px"
-        py={4}
+        py={1.5}
         bgColor={bgF}
         size="sm"
         color="black"

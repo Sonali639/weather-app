@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Text,Flex } from "@chakra-ui/react";
 import { Grid, GridItem } from "@chakra-ui/react";
 import wind from "../../images/wind.png";
 import humidity from "../../images/humidity.png";
@@ -53,10 +53,10 @@ function HighlightsMap(props) {
     },
     {
       name: "Sunrise & Sunset",
-      key: "sunrise",
+      key1: "sunrise",
       key2: "sunset",
-      img: sun,
-      img1: moon,
+      img1: sun,
+      img2: moon,
     },
   ];
   return (
@@ -70,7 +70,8 @@ function HighlightsMap(props) {
             key={index}
             w="100%"
             bg={bg}
-            py={5}
+            pt={5}
+            pb={2}
             borderRadius="12px"
             sx={{
               boxShadow: "0 4px 6px rgba(0, 0, 0, 0.3)",
@@ -94,24 +95,32 @@ function HighlightsMap(props) {
                 marginLeft: item.img1 ? "20px" : "auto",
               }}
             />
-            {/* if img 1 */}
-            {item.img1 && (
-              <img
-                src={item.img1}
-                alt=""
-                srcSet=""
-                width="16%"
-                style={{
-                  display: "block",
-                  marginLeft: "20px",
-                  paddingTop: "16px",
-                }}
-              />
-            )}
+     
+
+{
+  item.name === "Sunrise & Sunset" ? (
+    <Box pl={["4","8"]}>
+<Flex direction="row">
+<img src="" alt=""  srcset={item.img1} width="18%"/>
+<Text fontSize="18px" textAlign="center" pt={3} pl={["2", "5"]}>{props.sunSetRise[item.key1]}</Text>
+</Flex >
+<Flex direction="row" pt={5} >
+<img src="" alt="" srcset={item.img2} width="18%"/>
+<Text fontSize="18px" textAlign="center" pt={3} pl={["2","5"]}>{props.sunSetRise[item.key2]}</Text>
+</Flex >
+    </Box>
+    // <Text fontSize="32px" textAlign="center" pt={3}>
+    //   {props.sunSetRise[item.key]} <br /> {props.sunSetRise[item.key2]}
+    // </Text>
+  ) : null
+}
+
+
+            
             <Text fontSize="32px" textAlign="center" pt={3}>
               {props[item.key]}{props.aqi[item.key]}
-              
-              {props.sunSetRise[item.key]} <br /> {props.sunSetRise[item.key2]}
+             
+            <br />
             </Text>
           </GridItem>
         ))}

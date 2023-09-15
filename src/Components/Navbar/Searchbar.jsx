@@ -4,20 +4,20 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
-  InputRightElement
+  InputRightElement,
 } from "@chakra-ui/react";
-import { BiSearchAlt } from 'react-icons/bi';
-import { CiLocationOn } from 'react-icons/ci';
+import { BiSearchAlt } from "react-icons/bi";
+import { CiLocationOn } from "react-icons/ci";
 import { useColorModeValue } from "@chakra-ui/color-mode";
-import axios from 'axios'
+import axios from "axios";
 
-export const SearchBar = () => {
+export const SearchBar = (props) => {
   const bg = useColorModeValue("white", "#898b93");
   const border = useColorModeValue("1px solid #fff", "1px solid #3b3f4b");
   const color = useColorModeValue("black", "black");
 
   const [searchValue, setSearchValue] = useState("");
-  const[inputLocation, setInputLocation] = useState("");
+  const [inputLocation, setInputLocation] = useState("");
   const [InputCity, setInputCity] = useState("");
 
   const handleInputChange = (event) => {
@@ -27,7 +27,7 @@ export const SearchBar = () => {
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
-      setInputLocation(searchValue)
+      setInputLocation(searchValue);
       setSearchValue("");
     }
   };
@@ -36,17 +36,27 @@ export const SearchBar = () => {
 
   useEffect(() => {
     async function LocNameData() {
-        const res = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=7126e91d17b34e038b0133451231209&q=dehradun&days=5&hour=12&alerts=yes`);
-        setInputCity(res.data.name);
-        console.log(res.data.name);
-        
+      const res = await axios.get(
+        `https://api.weatherapi.com/v1/forecast.json?key=7126e91d17b34e038b0133451231209&q=dehradun&days=5&hour=12&alerts=yes`
+      );
+      setInputCity(res.data.name);
+      console.log(res.data.name);
     }
     LocNameData();
   });
-
+  // console.log(props.display ? props.display : "none");
   return (
     <>
-      <InputGroup borderRadius={5} size="md" width='400px'>
+      <InputGroup
+        borderRadius={5}
+        size="md"
+        width="400px"
+        display={
+          props.todisplay
+            ? { base: "block", md: "none", lg: "none" }
+            : { base: "block" }
+        }
+      >
         <InputLeftElement
           pointerEvents="none"
           color={color}
@@ -57,12 +67,17 @@ export const SearchBar = () => {
           placeholder="Search for places"
           border={border}
           bgColor={bg}
-          sx={{ borderRadius: '50px', '::placeholder': { color: 'black' } }}
+          sx={{ borderRadius: "50px", "::placeholder": { color: "black" } }}
           value={searchValue}
           onChange={handleInputChange}
           onKeyPress={handleKeyPress}
         />
-        <InputRightElement p={0} color={color} border="none" children={<CiLocationOn />} />
+        <InputRightElement
+          p={0}
+          color={color}
+          border="none"
+          children={<CiLocationOn />}
+        />
       </InputGroup>
     </>
   );
