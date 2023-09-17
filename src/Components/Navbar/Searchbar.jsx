@@ -20,6 +20,7 @@ export const SearchBar = (props) => {
   const border = useColorModeValue("1px solid grey", "1px solid #3b3f4b");
   const color = useColorModeValue("black", "black");
   const suggbg = useColorModeValue("white", "#898b93");
+  const suggbghover = useColorModeValue("#f5f5f5", "#6D6F75");
 
   const [searchValue, setSearchValue] = useState("");
   const [InputCity, setInputCity] = useState("");
@@ -143,7 +144,8 @@ export const SearchBar = (props) => {
             fontSize="14px"
             fontWeight="light"
             bgColor={suggbg}
-            _hover={{ bg: "#f5f5f5" }}
+            _hover={{ bg: suggbghover }}
+            overflowX="hidden"
           >
             <BiSearch />
             {item.name}, {item.region}
