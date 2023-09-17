@@ -64,7 +64,10 @@ export const SearchBar = (props) => {
     async function LocNameData() {
       const res = await axios.get(
         `https://api.weatherapi.com/v1/forecast.json?key=7126e91d17b34e038b0133451231209&q=dehradun&days=5&hour=12&alerts=yes`
-      );
+      )
+      .catch((err) => {
+        return;
+      });
       setInputCity(res.data.name);
     }
 

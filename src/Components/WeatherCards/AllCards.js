@@ -19,15 +19,18 @@ function AllCards() {
 
   useEffect(() => {
     async function getData() {
-      const res = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=7126e91d17b34e038b0133451231209&q=${inputloc}&days=5&hour=12&alerts=yes&aqi=yes`);
-      setWeatherData(res.data);
-      // console.log(res.data)
-
-      setCity(res.data.location.name);
+      try {
+        const res = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=7126e91d17b34e038b0133451231209&q=${inputloc}&days=5&hour=12&alerts=yes&aqi=yes`);
+        setWeatherData(res.data);
+        setCity(res.data.location.name);
+      } catch (error) {
+        console.error("An error occurred while fetching data:", error);
+        alert("Location not found!😥 Please enter a valid location.");
+      }
     }
     getData();
   }, [inputloc]);
-
+  
   const bg = useColorModeValue("white", "#3b3f4b");
   const border = useColorModeValue("1px solid white", "1px solid #3b3f4b");
 
