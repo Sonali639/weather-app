@@ -71,7 +71,7 @@ function HighlightsMap(props) {
             w="100%"
             bg={bg}
             pt={5}
-            pb={2}
+            pb={5}
             borderRadius="12px"
             sx={{
               boxShadow: "0 4px 6px rgba(0, 0, 0, 0.3)",
@@ -109,14 +109,8 @@ function HighlightsMap(props) {
 <Text fontSize="18px" textAlign="center" pt={3} pl={["2","5"]}>{props.sunSetRise[item.key2]}</Text>
 </Flex >
     </Box>
-    // <Text fontSize="32px" textAlign="center" pt={3}>
-    //   {props.sunSetRise[item.key]} <br /> {props.sunSetRise[item.key2]}
-    // </Text>
   ) : null
 }
-
-
-            
             <Text fontSize="32px" textAlign="center" pt={3}>
               {props[item.key]}{props.aqi[item.key]}
              

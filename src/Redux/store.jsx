@@ -1,5 +1,5 @@
-import btnReducer from './ButtonC&F/Reducer'
+import rootReducer from './rootReducer';
 import { createStore } from 'redux';
 
-const store = createStore(btnReducer);
+const store = createStore(rootReducer);
  export default store;
